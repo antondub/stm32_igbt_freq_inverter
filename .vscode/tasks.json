@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+      {"label": "Emulate STM32 Blue Pill",
+"type": "shell",
+"options": {
+  "cwd": "${workspaceFolder}"
+},
+"linux": {
+  "command": "bash",
+  "args": [
+    "-c",
+    "sudo docker run --name stm32 -it --rm -v $PWD:/work amamory/qemu-stm32 qemu-system-arm -M stm32-p103 -s -kernel /work/.pio/build/genericSTM32F103C8/firmware.elf"
+    "qemu-system-arm -M stm32-f103c8 -semihosting -kernel .pio/build/genericSTM32F103C8/firmware.bin"
+  ]
+},
+    }
+    ]
+}
